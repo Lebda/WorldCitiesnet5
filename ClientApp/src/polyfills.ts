@@ -2,8 +2,8 @@
  * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
  */
 
-import "@angular/localize/init"
-import "zone.js/dist/zone"
+import "@angular/localize/init";
+import "zone.js/dist/zone";
 
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
