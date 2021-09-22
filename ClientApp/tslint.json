@@ -28,8 +28,8 @@
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      true,
-      140
+      false,
+      90
     ],
     "member-access": false,
     "member-ordering": [
@@ -84,12 +84,13 @@
     "prefer-const": true,
     "quotemark": [
       true,
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "never"
     ],
     "triple-equals": [
       true,
@@ -124,6 +125,14 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
-  }
+    "directive-class-suffix": true,
+    "no-unused-declaration": true,
+    "prettier": true
+  },
+  "extends": [
+    null,
+    "tslint-etc",
+    "tslint-config-prettier",
+    "tslint-plugin-prettier"
+  ]
 }
