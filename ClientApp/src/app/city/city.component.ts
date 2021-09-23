@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Inject, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
+
 import { City } from "./city";
 
 @Component({
