@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>df91e5f7-699f-4c21-8ece-da7070ac39de</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +36,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="WorldMap\worldcities.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorldCities.Dal\WorldCities.Models.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
