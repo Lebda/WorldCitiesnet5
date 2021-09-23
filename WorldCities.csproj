@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WorldCities.Dal\WorldCities.Models.csproj" />
+    <ProjectReference Include="..\WorldCities.Implementations\WorldCities.Implementations.csproj" />
   </ItemGroup>
 
   <ItemGroup>
