@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Inject, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 
 import { City } from "./city";
 
@@ -10,9 +10,12 @@ import { City } from "./city";
   styleUrls: ["./city.component.css"],
 })
 export class CityComponent implements OnInit {
-  public cities$: Observable<City[]> | undefined;
+  public displayedColumns: string[] = ["id", "name", "lat", "lon"];
+  public cities$: Observable<City[]>;
 
-  constructor(private http: HttpClient, @Inject("BASE_URL") private baseUrl: string) {}
+  constructor(private http: HttpClient, @Inject("BASE_URL") private baseUrl: string) {
+    this.cities$ = of(new Array<City>());
+  }
 
   public ngOnInit() {
     this.cities$ = this.http.get<City[]>("https://localhost:44355/" + "api/Cities");
