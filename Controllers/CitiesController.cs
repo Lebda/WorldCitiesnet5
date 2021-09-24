@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using WorldCities.Implementations.Contracts;
 using WorldCities.Models;
 using WorldCities.Models.Models;
+using WorldCities.Models.RequestFeatures;
+using WorldCities.Models.ResponseFeatures;
 
 namespace WorldCities.Controllers
 {
@@ -22,10 +24,19 @@ namespace WorldCities.Controllers
 
         // GET: api/Cities
         [HttpGet(Name = "GetCities")]
-        public async Task<ActionResult<IEnumerable<City>>> GetCities()
+        public async Task<ActionResult<ApiResult<City>>> GetCities(
+            int? pageIndex,
+            int? pageSize)
         {
-            var items = await repository.City.GetAllAsync(false);
-            return Ok(items);
+            CityRequestParameters requestParameters = new(new QueryMetaData()
+            {
+                IsZeroBase = true,
+                PageSize = pageSize ?? 10,
+                PageIndex = pageIndex ?? 0   
+            });
+            var pagedList = await repository.City.GetAllParamsAsync(requestParameters, false);
+
+            return Ok(new ApiResult<City>(pagedList));
         }
 
         // GET: api/Cities/5

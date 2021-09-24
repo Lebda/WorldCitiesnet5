@@ -17,11 +17,17 @@ namespace WorldCities.Extensions
                         .AllowAnyHeader());
             });
 
-        public static void ConfigureSqlContext(this IServiceCollection services,
-            IConfiguration configuration) =>
+        public static void ConfigureSqlContext(
+            this IServiceCollection services,
+            IConfiguration configuration)
+        {
             services.AddDbContext<WorldCitiesDbContext>(opts =>
-                opts.UseNpgsql(configuration.GetConnectionString("PostgreSqlConnection"), b =>
-                    b.MigrationsAssembly("WorldCities")));
+             {
+                 opts.EnableDetailedErrors(true);
+                 opts.EnableSensitiveDataLogging(true);
+                 opts.UseNpgsql(configuration.GetConnectionString("PostgreSqlConnection"), b => b.MigrationsAssembly("WorldCities"));
+             });
+        }
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.ConfigureImplementations();
